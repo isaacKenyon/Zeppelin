@@ -41,9 +41,16 @@ export const MassmuteCmd = modActionsCmd({
     }
 
     const config = pluginData.config.get();
+<<<<<<< ours
     const muteReason = formatReasonWithAttachments(parseReason(config, muteReasonReceived.content), [
       ...msg.attachments.values(),
     ]);
+=======
+    const muteReason = parseReason(
+      config,
+      formatReasonWithAttachments(muteReasonReceived.content, [...msg.attachments.values()]),
+    );
+>>>>>>> theirs
 
     // Verify we can act upon all users
     for (const userId of args.userIds) {

@@ -30,7 +30,11 @@ export async function actualUnmuteCmd(
 
   const config = pluginData.config.get();
   const reason = args.reason
+<<<<<<< ours
     ? formatReasonWithAttachments(parseReason(config, args.reason), [...msg.attachments.values()])
+=======
+    ? parseReason(config, formatReasonWithAttachments(args.reason, [...msg.attachments.values()]))
+>>>>>>> theirs
     : undefined;
 
   const mutesPlugin = pluginData.getPlugin(MutesPlugin);
