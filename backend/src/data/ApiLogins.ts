@@ -96,6 +96,8 @@ export class ApiLogins extends BaseRepository {
       .createQueryBuilder()
       .where("id = :id", { id: loginId })
       .getOne();
+    
+     if(!login) return;
 
     if(moment.utc(login.expires_at).isSameOrAfter(updated_time)) return;
 
