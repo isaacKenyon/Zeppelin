@@ -350,6 +350,7 @@ connect().then(async () => {
 
   client.once("ready", () => {
     startUptimeCounter();
+    client.user?.setPresence({ activities: [{ name: "Honey, where's my trident? Gotta mute those meme senders in general!", type: "COMPETING" }] });
   });
 
   client.on(Constants.Events.RATE_LIMIT, (data) => {
