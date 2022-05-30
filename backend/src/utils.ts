@@ -327,7 +327,7 @@ export const zEmbedInput = z.object({
   title: z.string().optional(),
   description: z.string().optional(),
   url: z.string().optional(),
-  timestamp: z.number().optional(),
+  timestamp: z.string().optional(),
   color: z.number().optional(),
 
   footer: z.optional(
@@ -876,7 +876,7 @@ export function chunkArray<T>(arr: T[], chunkSize): T[][] {
 
   for (let i = 0; i < arr.length; i++) {
     currentChunk.push(arr[i]);
-    if ((i !== 0 && i % chunkSize === 0) || i === arr.length - 1) {
+    if ((i !== 0 && (i + 1) % chunkSize === 0) || i === arr.length - 1) {
       chunks.push(currentChunk);
       currentChunk = [];
     }
@@ -1597,4 +1597,3 @@ export function isTruthy<T>(value: T): value is Exclude<T, false | null | undefi
 }
 
 export const DBDateFormat = "YYYY-MM-DD HH:mm:ss";
-
