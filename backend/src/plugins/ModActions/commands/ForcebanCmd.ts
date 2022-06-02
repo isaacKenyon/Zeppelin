@@ -63,11 +63,7 @@ export const ForcebanCmd = modActionsCmd({
       mod = args.mod;
     }
     const config = pluginData.config.get();
-<<<<<<< ours
     const reason = formatReasonWithAttachments(parseReason(config, args.reason), [...msg.attachments.values()]);
-=======
-    const reason = parseReason(config, formatReasonWithAttachments(args.reason, [...msg.attachments.values()]))!;
->>>>>>> theirs
 
     ignoreEvent(pluginData, IgnoredEventType.Ban, user.id);
     pluginData.state.serverLogs.ignoreLog(LogType.MEMBER_BAN, user.id);

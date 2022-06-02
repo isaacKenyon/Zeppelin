@@ -18,11 +18,7 @@ export async function warnMember(
   warnOptions: WarnOptions = {},
 ): Promise<WarnResult> {
   const config = pluginData.config.get();
-<<<<<<< ours
   reason = parseReason(config, reason);
-=======
-  reason = parseReason(config, reason)!;
->>>>>>> theirs
   let notifyResult: UserNotificationResult;
   if (config.warn_message) {
     const warnMessage = await renderTemplate(

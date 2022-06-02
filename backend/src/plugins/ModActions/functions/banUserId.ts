@@ -40,11 +40,7 @@ export async function banUserId(
       error: "Invalid user",
     };
   }
-<<<<<<< ours
   reason &&= parseReason(config, reason);
-=======
-  if (reason) reason = parseReason(config, reason);
->>>>>>> theirs
 
   // Attempt to message the user *before* banning them, as doing it after may not be possible
   let notifyResult: UserNotificationResult = { method: null, success: true };
