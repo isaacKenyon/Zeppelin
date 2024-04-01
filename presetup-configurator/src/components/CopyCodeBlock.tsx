@@ -1,4 +1,3 @@
-import React from "react";
 import { CopyBlock, a11yLight } from "react-code-blocks";
 
 export default function CopyCodeBlock({ code, language }) {

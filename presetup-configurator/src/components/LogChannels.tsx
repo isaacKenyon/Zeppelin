@@ -1,4 +1,4 @@
-import React, { SetStateAction } from "react";
+import { SetStateAction } from "react";
 import "./LogChannels.css";
 
 const LOG_TYPES = {

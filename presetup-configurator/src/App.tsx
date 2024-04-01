@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Configurator } from "./components/Configurator";
 
 import "./App.css";
