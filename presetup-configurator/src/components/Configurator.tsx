@@ -1,8 +1,12 @@
-import yaml from "js-yaml";
 import React, { useEffect, useState } from "react";
-import "./Configurator.css";
+import yaml from "js-yaml";
+
+import CopyCodeBlock from "./CopyCodeBlock";
 import { LevelEntry, Levels } from "./Levels";
 import { LogChannel, LogChannels } from "./LogChannels";
+
+import "./Configurator.css";
+
 
 export function Configurator() {
   const [prefix, setPrefix] = useState("!");
@@ -99,38 +103,14 @@ export function Configurator() {
     setFormattedResult(_formattedResult);
   }, [result]);
 
-  const resultRows = formattedResult.split("\n").length || 1;
-
-  const [copied, setCopied] = useState(false);
-  function copyResultText(textarea: HTMLTextAreaElement) {
-    textarea.select();
-    document.execCommand("copy");
-    setCopied(true);
-  }
-
-  const [copyResetTimeout, setCopyResetTimeout] = useState<number | null>(null);
-  useEffect(() => {
-    if (!copied) {
-      return;
-    }
-
-    if (copyResetTimeout != null) {
-      window.clearTimeout(copyResetTimeout);
-    }
-
-    const timeout = window.setTimeout(() => setCopied(false), 3000);
-    setCopyResetTimeout(timeout);
-  }, [copied]);
 
   return (
     <div className="Configurator">
       {/* Options */}
       <div className="options">
-        <h2>Prefix</h2>
+        <h2>Bot Prefix</h2>
         <div className="control">
           <label>
-            Bot prefix
-            <br />
             <input value={prefix} onChange={(e) => setPrefix(e.target.value)} />
           </label>
         </div>
@@ -184,15 +164,17 @@ export function Configurator() {
         </div>
       </div>
 
-      {/* Result */}
-      <textarea
-        className="result"
-        rows={resultRows}
-        readOnly={true}
-        value={formattedResult}
-        onClick={(e) => copyResultText(e.target as HTMLTextAreaElement)}
-      />
-      {copied ? <em>Copied!</em> : <em>Click textarea to copy</em>}
+      <br />
+
+      {/*/!* Result *!/*/}
+      <div className="result">
+        <CopyCodeBlock
+          code={formattedResult}
+          language={"yaml"}
+          showLineNumbers={true}
+          startingLineNumber={1}
+        />
+      </div>
     </div>
   );
 }
