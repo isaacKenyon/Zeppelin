@@ -171,8 +171,6 @@ export function Configurator() {
         <CopyCodeBlock
           code={formattedResult}
           language={"yaml"}
-          showLineNumbers={true}
-          startingLineNumber={1}
         />
       </div>
     </div>
